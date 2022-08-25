@@ -1,6 +1,9 @@
+/* eslint-disable sonarjs/no-duplicate-string */
+/* eslint-disable max-len */
+/* eslint-disable quotes */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 
 describe("6 - Crie a função do botão salvar", () => {
@@ -22,7 +25,7 @@ describe("6 - Crie a função do botão salvar", () => {
     userEvent.type(attr2Input, '90');
     userEvent.type(attr3Input, '30');
     userEvent.selectOptions(selectInput, "normal");
-    
+
     expect(saveBtn).toBeEnabled();
     userEvent.click(saveBtn);
 
@@ -49,7 +52,7 @@ describe("6 - Crie a função do botão salvar", () => {
     userEvent.type(attr2Input, '90');
     userEvent.type(attr3Input, '30');
     userEvent.selectOptions(selectInput, "normal");
-    
+
     expect(saveBtn).toBeEnabled();
     userEvent.click(saveBtn);
 
@@ -76,11 +79,10 @@ describe("6 - Crie a função do botão salvar", () => {
     userEvent.type(attr2Input, '90');
     userEvent.type(attr3Input, '30');
     userEvent.selectOptions(selectInput, "raro");
-    
+
     expect(saveBtn).toBeEnabled();
     userEvent.click(saveBtn);
 
     expect(selectInput).toHaveValue('normal');
   });
-
-})
+});

@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-magic-numbers */
 /* eslint-disable react/no-unused-class-component-methods */
 /* eslint-disable react/no-unused-state */
@@ -16,9 +17,10 @@ class App extends React.Component {
       cardAttr2: 0,
       cardAttr3: 0,
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      arraySaveData: [{}],
     };
   }
 
@@ -43,6 +45,36 @@ class App extends React.Component {
     });
   };
 
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const { cardAttr1, cardAttr2, cardAttr3, cardName, cardDescription,
+      cardImage, cardRare } = this.state;
+    this.setState((prevState) => ({
+      arraySaveData: [{ ...prevState.arraySaveData,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardName,
+        cardDescription,
+        cardImage,
+        cardRare,
+      }],
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardRare: 'normal',
+      isSaveButtonDisabled: true,
+      cardTrunfo: false,
+    }));
+  };
+
+  funcaoValores = (event) => {
+    console.log(event.target.value);
+  };
+
   render() {
     const { cardName, cardDescription, cardAttr1 } = this.state;
     const { cardAttr2, cardAttr3, cardImage, cardRare } = this.state;
@@ -63,8 +95,17 @@ class App extends React.Component {
         />
         <Form
           name={ name }
+          cardName={ cardName }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardDescription={ cardDescription }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          cardImage={ cardImage }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
       </div>
     );
