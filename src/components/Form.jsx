@@ -6,7 +6,8 @@ export default class Form extends Component {
   constructor() {
     super();
     this.state = {
-
+      cardName: '',
+      cardDescription: '',
     };
   }
 
@@ -25,6 +26,7 @@ export default class Form extends Component {
             id="input-text-one"
             value={ cardName }
             onChange={ onInputChange }
+            name="cardName"
           />
         </label>
         <label htmlFor="input-textarea">
@@ -34,6 +36,7 @@ export default class Form extends Component {
             id="inpu-textarea"
             value={ cardDescription }
             onChange={ onInputChange }
+            name="cardDescription"
           />
         </label>
         <label htmlFor="input-number-one">
@@ -44,6 +47,7 @@ export default class Form extends Component {
             id="input-number-one"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            name="cardAttr1"
           />
         </label>
         <label htmlFor="input-number-two">
@@ -54,6 +58,7 @@ export default class Form extends Component {
             id="input-number-two"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            name="cardAttr2"
           />
         </label>
         <label htmlFor="input-number-three">
@@ -64,6 +69,7 @@ export default class Form extends Component {
             id="input-number-three"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            name="cardAttr3"
           />
         </label>
         <label htmlFor="input-text-two">
@@ -74,6 +80,7 @@ export default class Form extends Component {
             id="input-text-two"
             value={ cardImage }
             onChange={ onInputChange }
+            name="cardImage"
           />
         </label>
         <label htmlFor="input-select">
@@ -83,6 +90,7 @@ export default class Form extends Component {
             id="input-select"
             value={ cardRare }
             onChange={ onInputChange }
+            name="cardRare"
           >
             <option value="normal">normal</option>
             <option value="raro">raro</option>
@@ -97,6 +105,7 @@ export default class Form extends Component {
             id="input-checkbox"
             checked={ cardTrunfo }
             onChange={ onInputChange }
+            name="cardTrunfo"
           />
         </label>
         <button
@@ -104,6 +113,7 @@ export default class Form extends Component {
           data-testid="save-button"
           type="submit"
           onClick={ onSaveButtonClick }
+          name="save-button"
         >
           Salvar
         </button>
