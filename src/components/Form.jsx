@@ -3,14 +3,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class Form extends Component {
-  constructor() {
-    super();
-    this.state = {
-      cardName: '',
-      cardDescription: '',
-    };
-  }
-
   render() {
     const { cardName, cardDescription, cardAttr1 } = this.props;
     const { cardAttr2, cardAttr3, cardImage } = this.props;

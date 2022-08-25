@@ -17,8 +17,6 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      hasTrunfo: true,
-      isSaveButtonDisabled: true,
     };
   }
 
@@ -32,12 +30,11 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1 } = this.state;
     const { cardAttr2, cardAttr3, cardImage, cardRare } = this.state;
-    const { cardTrunfo } = this.state;
+    const { cardTrunfo, name } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Card
-          name=""
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
@@ -49,6 +46,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
         />
         <Form
+          name={ name }
           onInputChange={ this.onInputChange }
         />
       </div>
