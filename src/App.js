@@ -31,13 +31,13 @@ class App extends React.Component {
         cardImage, cardRare } = this.state;
       const emptyFields = cardAttr1 && cardAttr2 && cardAttr3 && cardName
         && cardDescription && cardImage && cardRare !== '';
-      const somaPrudut = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= 210;
-      const cadaValor = Number(cardAttr1) <= 90
-        && Number(cardAttr2) <= 90 && Number(cardAttr3) <= 90;
+      const somaPrud = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= '210';
+      const cadaValor = Number(cardAttr1) <= '90'
+        && Number(cardAttr2) <= '90' && Number(cardAttr3) <= '90';
       const valoresNegativos = Number(cardAttr1) < 0
         || Number(cardAttr2) < 0 || Number(cardAttr3) < 0;
 
-      if (emptyFields && somaPrudut && cadaValor && valoresNegativos === false) {
+      if (emptyFields && somaPrud && cadaValor && valoresNegativos === false) {
         this.setState({ isSaveButtonDisabled: false });
       } else { this.setState({ isSaveButtonDisabled: true }); }
     });
