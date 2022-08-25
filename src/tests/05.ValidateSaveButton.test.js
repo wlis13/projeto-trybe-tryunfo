@@ -1,3 +1,8 @@
+/* eslint-disable max-lines */
+/* eslint-disable semi */
+/* eslint-disable sonarjs/no-duplicate-string */
+/* eslint-disable max-len */
+/* eslint-disable quotes */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'

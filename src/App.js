@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 /* eslint-disable react/no-unused-class-component-methods */
 /* eslint-disable react/no-unused-state */
 import React from 'react';
@@ -17,6 +18,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     };
   }
 
@@ -24,13 +26,27 @@ class App extends React.Component {
     const { target } = event;
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, () => {
+      const { cardAttr1, cardAttr2, cardAttr3, cardName, cardDescription,
+        cardImage, cardRare } = this.state;
+      const emptyFields = cardAttr1 && cardAttr2 && cardAttr3 && cardName
+        && cardDescription && cardImage && cardRare !== '';
+      const somaPrudut = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= 210;
+      const cadaValor = Number(cardAttr1) <= 90
+        && Number(cardAttr2) <= 90 && Number(cardAttr3) <= 90;
+      const valoresNegativos = Number(cardAttr1) < 0
+        || Number(cardAttr2) < 0 || Number(cardAttr3) < 0;
+
+      if (emptyFields && somaPrudut && cadaValor && valoresNegativos === false) {
+        this.setState({ isSaveButtonDisabled: false });
+      } else { this.setState({ isSaveButtonDisabled: true }); }
+    });
   };
 
   render() {
     const { cardName, cardDescription, cardAttr1 } = this.state;
     const { cardAttr2, cardAttr3, cardImage, cardRare } = this.state;
-    const { cardTrunfo, name } = this.state;
+    const { cardTrunfo, name, isSaveButtonDisabled } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -47,6 +63,7 @@ class App extends React.Component {
         />
         <Form
           name={ name }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
         />
       </div>
