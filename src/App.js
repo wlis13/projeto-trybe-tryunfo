@@ -71,10 +71,6 @@ class App extends React.Component {
     }));
   };
 
-  funcaoValores = (event) => {
-    console.log(event.target.value);
-  };
-
   render() {
     const { cardName, cardDescription, cardAttr1 } = this.state;
     const { cardAttr2, cardAttr3, cardImage, cardRare } = this.state;
