@@ -37,6 +37,7 @@ class App extends React.Component {
       <div>
         <h1>Tryunfo</h1>
         <Card
+          name=""
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
