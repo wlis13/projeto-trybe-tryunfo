@@ -9,8 +9,8 @@ import Card from './components/Card';
 import Form from './components/Form';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       name: '',
       cardName: '',
@@ -99,7 +99,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
-          baralho={ this.baralho }
+          arraySaveData={ arraySaveData }
         />
         <Form
           name={ name }
@@ -116,7 +116,6 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
-        <Card arraySaveData={ arraySaveData } />
       </div>
     );
   }
