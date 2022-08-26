@@ -22,7 +22,7 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
-      arraySaveData: [{}],
+      arraySaveData: [],
       hasTrunfo: false,
     };
   }
@@ -46,11 +46,6 @@ class App extends React.Component {
         this.setState({ isSaveButtonDisabled: false });
       } else { this.setState({ isSaveButtonDisabled: true }); }
     });
-    const { arraySaveData } = this.state;
-    const valorArray = arraySaveData.filter((itens) => itens.cardTrunfo === true);
-    if (valorArray) {
-      this.setState({ hasTrunfo: true });
-    }
   };
 
   onSaveButtonClick = (event) => {
@@ -58,7 +53,7 @@ class App extends React.Component {
     const { cardAttr1, cardAttr2, cardAttr3, cardName, cardDescription,
       cardImage, cardRare, cardTrunfo, hasTrunfo } = this.state;
     this.setState((prevState) => ({
-      arraySaveData: [{ ...prevState.arraySaveData,
+      arraySaveData: [...prevState.arraySaveData,
         cardAttr1,
         cardAttr2,
         cardAttr3,
@@ -68,7 +63,7 @@ class App extends React.Component {
         cardRare,
         cardTrunfo,
         hasTrunfo,
-      }],
+      ],
       cardAttr1: 0,
       cardAttr2: 0,
       cardAttr3: 0,
@@ -79,12 +74,18 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       cardTrunfo: false,
     }));
+    const { arraySaveData } = this.state;
+    const valorArray = arraySaveData.filter((itens) => itens.cardTrunfo === true);
+    if (valorArray) {
+      this.setState({ hasTrunfo: true });
+    }
   };
 
   render() {
     const { cardName, cardDescription, cardAttr1 } = this.state;
     const { cardAttr2, cardAttr3, cardImage, cardRare } = this.state;
     const { cardTrunfo, name, isSaveButtonDisabled, hasTrunfo } = this.state;
+    const { arraySaveData } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -98,6 +99,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
+          baralho={ this.baralho }
         />
         <Form
           name={ name }
@@ -114,7 +116,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
-        <arraySaveData />
+        <Card arraySaveData={ arraySaveData } />
       </div>
     );
   }

@@ -6,7 +6,7 @@ class Card extends React.Component {
   render() {
     const { cardName, cardImage, cardDescription } = this.props;
     const { cardAttr1, cardAttr2, cardAttr3 } = this.props;
-    const { cardRare, cardTrunfo } = this.props;
+    const { cardRare, cardTrunfo, arraySaveData } = this.props;
     return (
       <div>
         <p data-testid="name-card">{ cardName }</p>
@@ -17,6 +17,9 @@ class Card extends React.Component {
         <p data-testid="attr3-card">{ cardAttr3 }</p>
         <p data-testid="rare-card">{ cardRare }</p>
         <p>{cardTrunfo ? <p data-testid="trunfo-card"> Super Trunfo</p> : '' }</p>
+        <section>
+          <div>{ arraySaveData }</div>
+        </section>
       </div>
     );
   }
@@ -33,4 +36,5 @@ Card.propTypes = {
   cardAttr3: PropTypes.number.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  arraySaveData: PropTypes.string.isRequired,
 };
