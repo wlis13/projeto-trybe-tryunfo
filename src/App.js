@@ -1,3 +1,5 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable semi */
 /* eslint-disable no-alert */
 /* eslint-disable no-magic-numbers */
 /* eslint-disable react/no-unused-class-component-methods */
@@ -21,6 +23,7 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       arraySaveData: [{}],
+      hasTrunfo: false,
     };
   }
 
@@ -42,13 +45,18 @@ class App extends React.Component {
       if (emptyFields && somaPrud && cadaValor && valoresNegativos === false) {
         this.setState({ isSaveButtonDisabled: false });
       } else { this.setState({ isSaveButtonDisabled: true }); }
-    });
+    })
+    const { arraySaveData } = this.state;
+    const valorArray = arraySaveData.filter((itens) => itens.cardTrunfo === true);
+    if (valorArray) {
+      this.setState({ hasTrunfo: true })
+    } else { this.setState({ hasTrunfo: false }); }
   };
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
     const { cardAttr1, cardAttr2, cardAttr3, cardName, cardDescription,
-      cardImage, cardRare } = this.state;
+      cardImage, cardRare, cardTrunfo, hasTrunfo } = this.state;
     this.setState((prevState) => ({
       arraySaveData: [{ ...prevState.arraySaveData,
         cardAttr1,
@@ -58,6 +66,8 @@ class App extends React.Component {
         cardDescription,
         cardImage,
         cardRare,
+        cardTrunfo,
+        hasTrunfo,
       }],
       cardAttr1: 0,
       cardAttr2: 0,
@@ -68,13 +78,21 @@ class App extends React.Component {
       cardRare: 'normal',
       isSaveButtonDisabled: true,
       cardTrunfo: false,
-    }));
+    }))
+  }
+
+  verificandoTryunfo = () => {
+    const { arraySaveData } = this.state;
+    const verificaHasTrunfu = arraySaveData.some((itens) => (itens.hasTrunfo === true));
+    if (verificaHasTrunfu === true) {
+      this.setState({ hasTrunfo: false })
+    }
   };
 
   render() {
     const { cardName, cardDescription, cardAttr1 } = this.state;
     const { cardAttr2, cardAttr3, cardImage, cardRare } = this.state;
-    const { cardTrunfo, name, isSaveButtonDisabled } = this.state;
+    const { cardTrunfo, name, isSaveButtonDisabled, hasTrunfo } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -99,10 +117,12 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           cardImage={ cardImage }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
+        <arraySaveData />
       </div>
     );
   }
