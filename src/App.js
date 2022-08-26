@@ -45,11 +45,11 @@ class App extends React.Component {
       if (emptyFields && somaPrud && cadaValor && valoresNegativos === false) {
         this.setState({ isSaveButtonDisabled: false });
       } else { this.setState({ isSaveButtonDisabled: true }); }
-    })
+    });
     const { arraySaveData } = this.state;
     const valorArray = arraySaveData.filter((itens) => itens.cardTrunfo === true);
     if (valorArray) {
-      this.setState({ hasTrunfo: true })
+      this.setState({ hasTrunfo: true });
     } else { this.setState({ hasTrunfo: false }); }
   };
 
@@ -78,16 +78,8 @@ class App extends React.Component {
       cardRare: 'normal',
       isSaveButtonDisabled: true,
       cardTrunfo: false,
-    }))
+    }));
   }
-
-  verificandoTryunfo = () => {
-    const { arraySaveData } = this.state;
-    const verificaHasTrunfu = arraySaveData.some((itens) => (itens.hasTrunfo === true));
-    if (verificaHasTrunfu === true) {
-      this.setState({ hasTrunfo: false })
-    }
-  };
 
   render() {
     const { cardName, cardDescription, cardAttr1 } = this.state;
