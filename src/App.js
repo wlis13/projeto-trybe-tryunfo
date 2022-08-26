@@ -50,7 +50,7 @@ class App extends React.Component {
     const valorArray = arraySaveData.filter((itens) => itens.cardTrunfo === true);
     if (valorArray) {
       this.setState({ hasTrunfo: true });
-    } else { this.setState({ hasTrunfo: false }); }
+    }
   };
 
   onSaveButtonClick = (event) => {
@@ -79,7 +79,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       cardTrunfo: false,
     }));
-  }
+  };
 
   render() {
     const { cardName, cardDescription, cardAttr1 } = this.state;
